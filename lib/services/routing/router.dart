@@ -3,24 +3,30 @@ import 'package:challenge/screens/current_forecast_page.dart';
 import 'package:challenge/screens/landing_page.dart';
 import 'package:challenge/screens/resume_page.dart';
 import 'package:flutter/cupertino.dart';
+import '../../screens/detailed_forecast_page.dart';
 
 
 Route<dynamic> generateRoute(RouteSettings settings){
+  print('object');
   switch(settings.name){
     case CurrentForecastRoute:
-      return _getPageRoute(CurrentForecastPage());
+      return getPageRoute(const CurrentForecastPage());
+    case DetailedForecastRoute:
+      return getPageRoute(DetailedForecastPage(settings: settings.arguments));
     case CVRoute:
-      return _getPageRoute(ResumePage());
+      return getPageRoute(const ResumePage());
     default:
-      return _getPageRoute(LandingPage());
+      return getPageRoute(const LandingPage());
   }
 }
 
-PageRoute _getPageRoute (Widget child){
+
+PageRoute getPageRoute (Widget child){
   return _FadeRoute(child: child);
 }
 
 class _FadeRoute extends PageRouteBuilder{
+
   final Widget child;
   _FadeRoute({required this.child}) : super(
     pageBuilder: (
@@ -34,5 +40,6 @@ class _FadeRoute extends PageRouteBuilder{
         Animation<double> secondaryAnimation,
         Widget child,
         ) => FadeTransition(opacity: animation, child: child,),
+
   );
 }

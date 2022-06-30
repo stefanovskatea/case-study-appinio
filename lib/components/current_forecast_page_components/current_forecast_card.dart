@@ -1,27 +1,15 @@
-import 'package:challenge/screens/current_forecast_page.dart';
+import 'package:challenge/models/current_forecast_list_objects.dart';
 import 'package:flutter/material.dart';
-import '../../models/city_list.dart';
 import '../../models/city_model.dart';
-import '../../models/current_forecasts_list.dart';
-import '../../screens/detailed_forecast_page.dart';
-import '../../services/fetch_forecast.dart';
-import '../../services/routing/locator.dart';
 import '../../services/routing/navigation_service.dart';
+import '../../services/setup_services.dart';
 
 late City selectedCity;
 
 class CurrentForecastCard extends StatefulWidget {
-  final String name;
-  final double lat;
-  final double lon;
-  final int index;
+  final CurrentForecastDetails details;
 
-  const CurrentForecastCard(
-      {Key? key,
-      required this.name,
-      required this.lat,
-      required this.lon,
-      required this.index})
+  const CurrentForecastCard({Key? key, required this.details})
       : super(key: key);
 
   @override
@@ -29,43 +17,34 @@ class CurrentForecastCard extends StatefulWidget {
 }
 
 class _CurrentForecastCardState extends State<CurrentForecastCard> {
+  final String route = 'DetailedForecastPage';
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: fetchForecast(widget.name, widget.lat, widget.lon, widget.index),
-      builder: (context, snapshot) {
-        return GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) =>
-                    ForecastDetail(city: cities[widget.index]),
-              ),
-            );
-          },
-          child: Card(
-            margin: EdgeInsets.only(left: 30, right: 30, bottom: 20),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Container(
-              height: 200,
-              child: Center(
-                child: Text(
-                  '${currentForecasts[widget.index].name}'
-                  '\nCurrent temperature: ${currentForecasts[widget.index].temperature}'
-                  '\nCurrent condition: ${currentForecasts[widget.index].condition}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ),
-              ),
+    return GestureDetector(
+      onTap: () {
+        locator<NavigationService>().navigateToWObj(route,widget.details.name,widget.details.lon, widget.details.lat, );
+      },
+      child: Card(
+        margin: const EdgeInsets.only(left: 30, right: 30, bottom: 20),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: SizedBox(
+          height: 200,
+          child: Center(
+            child: Text(
+              '${widget.details.name}'
+              '\nCurrent temperature: ${widget.details.temperature}'
+              '\nCurrent condition: ${widget.details.condition}',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

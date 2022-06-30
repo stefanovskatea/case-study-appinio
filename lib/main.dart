@@ -1,4 +1,4 @@
-import 'package:challenge/services/routing/locator.dart';
+import 'package:challenge/services/setup_services.dart';
 import 'package:challenge/services/routing/navigation_service.dart';
 import 'package:challenge/services/routing/router.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,7 @@ import 'models/route_names.dart';
 
 
 void main() {
-  setupLocator();
+  setupServices();
   runApp(const MyApp());
 }
 

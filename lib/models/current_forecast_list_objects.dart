@@ -1,16 +1,20 @@
 
 
 class CurrentForecastDetails{
-  late final String condition;
-  late final int temperature;
-  late final String name;
-  late bool didupdate;
+  final String condition;
+  final int temperature;
+  final String name;
+  final double lat;
+  final double lon;
+  final bool didupdate;
 
   CurrentForecastDetails({
-    this.condition = 'loading',
-    this.temperature = -000,
-    this.name = 'loading',
-    this.didupdate = false,
+    required this.condition,
+    required this.temperature,
+    required this.name ,
+    required this.didupdate,
+    required this.lat ,
+    required this.lon,
   });
 }
 
