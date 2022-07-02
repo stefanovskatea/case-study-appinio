@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Case Study',
       debugShowCheckedModeBanner: false,
       home: Navigator(
-        key: locator<NavigationService>().navigatorKey,
+        key: service<NavigationService>().navigatorKey,
         onGenerateRoute: generateRoute,
         initialRoute: LandingPageRoute,
       ),

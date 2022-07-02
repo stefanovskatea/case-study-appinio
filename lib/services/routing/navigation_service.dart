@@ -11,11 +11,6 @@ class NavigationService{
     return navigatorKey.currentState!.pushNamed(routeName);
   }
 
-  Future<dynamic> navigateToWObj(String routeName,String name,double lat,double lon){
-    print(name);//
-    return navigatorKey.currentState!.pushNamed(routeName,arguments: {'name': name,'lat': lat,'lon': lon});
-  }
-
   void goBack(){
     return navigatorKey.currentState!.pop();
   }

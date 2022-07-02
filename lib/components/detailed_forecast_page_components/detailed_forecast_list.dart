@@ -1,28 +1,24 @@
-
 import 'package:challenge/components/detailed_forecast_page_components/detailed_forecast_card.dart';
 import 'package:flutter/material.dart';
-
+import '../../models/detailed_forecast_list_objects.dart';
 import '../../services/forecasts/forecast_service.dart';
 import '../../services/setup_services.dart';
-import '../current_forecast_page_components/current_forecast_card.dart';
 
-class DetailedForecastList extends StatefulWidget {
-  const DetailedForecastList({Key? key}) : super(key: key);
+class DetailedForecastList extends StatelessWidget {
+  final List<DetailedForecastDetails> forecasts;
 
-  @override
-  State<DetailedForecastList> createState() => _DetailedForecastListState();
-}
+  const DetailedForecastList({
+    Key? key,
+    required this.forecasts,
+  }) : super(key: key);
 
-class _DetailedForecastListState extends State<DetailedForecastList> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: forecastGetter<ForecastService>().allDetailedForecasts.length,
-        itemBuilder: (context, index) {
-          return DetailedForecastCard(details: forecastGetter<ForecastService>().allDetailedForecasts[index]);
-        },
-      ),
+    return ListView.builder(
+      itemCount: forecasts.length,
+      itemBuilder: (context, index) {
+        return DetailedForecastCard(details: forecasts[index]);
+      },
     );
   }
 }

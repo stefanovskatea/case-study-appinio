@@ -7,12 +7,9 @@ import '../../screens/detailed_forecast_page.dart';
 
 
 Route<dynamic> generateRoute(RouteSettings settings){
-  print('object');
   switch(settings.name){
     case CurrentForecastRoute:
       return getPageRoute(const CurrentForecastPage());
-    case DetailedForecastRoute:
-      return getPageRoute(DetailedForecastPage(settings: settings.arguments));
     case CVRoute:
       return getPageRoute(const ResumePage());
     default:
@@ -40,6 +37,5 @@ class _FadeRoute extends PageRouteBuilder{
         Animation<double> secondaryAnimation,
         Widget child,
         ) => FadeTransition(opacity: animation, child: child,),
-
   );
 }

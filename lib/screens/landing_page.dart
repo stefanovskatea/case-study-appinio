@@ -2,14 +2,9 @@ import 'package:challenge/components/landing_page_components/landing_page_button
 import 'package:flutter/material.dart';
 import '../components/navbar/nav_drawer.dart';
 
-class LandingPage extends StatefulWidget {
+class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
 
-  @override
-  _LandingPageState createState() => _LandingPageState();
-}
-
-class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

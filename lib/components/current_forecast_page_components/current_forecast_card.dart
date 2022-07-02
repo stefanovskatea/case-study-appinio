@@ -1,28 +1,24 @@
 import 'package:challenge/models/current_forecast_list_objects.dart';
+import 'package:challenge/screens/detailed_forecast_page.dart';
 import 'package:flutter/material.dart';
-import '../../models/city_model.dart';
-import '../../services/routing/navigation_service.dart';
-import '../../services/setup_services.dart';
 
-late City selectedCity;
-
-class CurrentForecastCard extends StatefulWidget {
+class CurrentForecastCard extends StatelessWidget {
   final CurrentForecastDetails details;
 
   const CurrentForecastCard({Key? key, required this.details})
       : super(key: key);
 
-  @override
-  State<CurrentForecastCard> createState() => _CurrentForecastCardState();
-}
-
-class _CurrentForecastCardState extends State<CurrentForecastCard> {
   final String route = 'DetailedForecastPage';
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        locator<NavigationService>().navigateToWObj(route,widget.details.name,widget.details.lon, widget.details.lat, );
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => DetailedForecastPage( selectedCity: details.city),
+          ),
+        );
       },
       child: Card(
         margin: const EdgeInsets.only(left: 30, right: 30, bottom: 20),
@@ -33,11 +29,11 @@ class _CurrentForecastCardState extends State<CurrentForecastCard> {
           height: 200,
           child: Center(
             child: Text(
-              '${widget.details.name}'
-              '\nCurrent temperature: ${widget.details.temperature}'
-              '\nCurrent condition: ${widget.details.condition}',
+              '${details.city.cityName}'
+              '\nCurrent temperature: ${details.temperature}'
+              '\nCurrent condition: ${details.condition}',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 20),

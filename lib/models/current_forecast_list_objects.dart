@@ -1,20 +1,20 @@
 
+import 'city_model.dart';
 
 class CurrentForecastDetails{
-  final String condition;
-  final int temperature;
-  final String name;
-  final double lat;
-  final double lon;
-  final bool didupdate;
+  late final String condition;
+  late final int temperature;
+  late final City city;
 
   CurrentForecastDetails({
     required this.condition,
     required this.temperature,
-    required this.name ,
-    required this.didupdate,
-    required this.lat ,
-    required this.lon,
+    required this.city
   });
+
+  CurrentForecastDetails.fromJson(Map<dynamic,dynamic> json, this.city){
+    temperature = json['dataseries'][0]['temp2m'];
+    condition = json['dataseries'][0]['prec_type'];
+  }
 }
 

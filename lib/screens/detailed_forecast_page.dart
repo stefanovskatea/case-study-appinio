@@ -1,13 +1,14 @@
 import 'package:challenge/components/detailed_forecast_page_components/detailed_forecast_list.dart';
 import 'package:challenge/services/forecasts/forecast_service.dart';
 import 'package:flutter/material.dart';
-import '../components/navbar/nav_drawer.dart';
+import '../models/city_model.dart';
+import '../models/detailed_forecast_list_objects.dart';
 import '../services/setup_services.dart';
 
 class DetailedForecastPage extends StatefulWidget {
-  final Object? settings;
+  final City selectedCity;
 
-  const DetailedForecastPage({Key? key, required this.settings})
+  const DetailedForecastPage({Key? key, required this.selectedCity})
       : super(key: key);
 
   @override
@@ -15,29 +16,37 @@ class DetailedForecastPage extends StatefulWidget {
 }
 
 class _DetailedForecastPageState extends State<DetailedForecastPage> {
+  List<DetailedForecastDetails> allForecasts = [];
   @override
   Widget build(BuildContext context) {
-    final Map<String, dynamic> args = widget.settings as Map<String, dynamic>;
-    double lat = args['lat'];
-    double lon = args['lon'];
-    String name = args['name'];
     return Scaffold(
       appBar: AppBar(),
-      drawer: const NavigationDrawer(),
       body: FutureBuilder(
-          future: forecastGetter<ForecastService>().updateDetailedForecast(lon, lat),
+        future: service<ForecastService>().updateDetailedForecast(allForecasts, widget.selectedCity.lon, widget.selectedCity.lat),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             }
             if (snapshot.connectionState == ConnectionState.done) {
-              return Center(
+              allForecasts = snapshot.data as List<DetailedForecastDetails>;
+              return DetailedForecastList(forecasts: allForecasts);
+            }
+            return const Text('An error has occurred');
+          }),
+    );
+  }
+}
+
+
+
+
+/*Center(
                 child: Column(
                   children: [
                     SizedBox(
                       height: 120,
                       width: 300,
-                      child: Text('Showing three-day forecast for:\n$name\n',
+                      child: Text('Showing three-day forecast for:\n${widget.name}\n',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.black54,
@@ -45,9 +54,9 @@ class _DetailedForecastPageState extends State<DetailedForecastPage> {
                               fontSize: 30)),
 
                     ),
-                    const DetailedForecastList(),
-                    SizedBox(child:Text('after list')),
-                    /*
+
+                    SizedBox(child:Text('after list')),*/
+/*
                 Expanded(
                   child: FutureBuilder(
                       future: forecastGetter<ForecastService>()
@@ -90,12 +99,6 @@ class _DetailedForecastPageState extends State<DetailedForecastPage> {
                         );*/
                       }),
                 ),*/
-                  ],
-                ),
-              );
-            }
-            return const Text('An error has occurred');
-          }),
-    );
-  }
-}
+//],
+//  ),
+// );

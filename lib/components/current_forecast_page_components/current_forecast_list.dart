@@ -1,28 +1,20 @@
-import 'package:challenge/models/city_list.dart';
 import 'package:challenge/models/current_forecast_list_objects.dart';
-import 'package:challenge/services/forecasts/forecast_service.dart';
-import 'package:challenge/services/setup_services.dart';
 import 'package:flutter/material.dart';
 import 'current_forecast_card.dart';
 
 
 
-class CurrentForecastList extends StatefulWidget {
-  const CurrentForecastList({Key? key, }) : super(key: key);
-
-  @override
-  _CurrentForecastListState createState() => _CurrentForecastListState();
-}
-
-class _CurrentForecastListState extends State<CurrentForecastList> {
+class CurrentForecastList extends StatelessWidget {
+  final List<CurrentForecastDetails> forecasts;
+  const CurrentForecastList({Key? key,required this.forecasts}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
     return ListView.builder(
-      itemCount: forecastGetter<ForecastService>().allForecasts.length,
+      itemCount: forecasts.length,
       itemBuilder: (context, index) {
-        return CurrentForecastCard(details: forecastGetter<ForecastService>().allForecasts[index]);
+        return CurrentForecastCard(details: forecasts[index]);
       },
     );
   }

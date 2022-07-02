@@ -22,7 +22,7 @@ class LandingPageButton extends StatelessWidget {
       decoration: landing_page_button_deco,
       child: GestureDetector(
         onTap: () {
-          locator<NavigationService>().navigateTo(route);
+          service<NavigationService>().navigateTo(route);
         },
         child: Center(
           child: Text(

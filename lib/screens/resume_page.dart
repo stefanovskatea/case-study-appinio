@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import '../components/navbar/nav_bar.dart';
-import '../components/navbar/nav_drawer.dart';
 import '../components/resume_page_components/resume_contact_info.dart';
 import '../components/resume_page_components/resume_description.dart';
-import '../components/resume_page_components/resume_image.dart';
 import '../components/resume_page_components/resume_title.dart';
 
 class ResumePage extends StatelessWidget {
@@ -12,24 +9,18 @@ class ResumePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavigationDrawer(),
-      body: Container(
+      appBar: AppBar(),
+      body: Column(children: [
+        const ResumeTitleCell(),
+        Expanded(
           child: Column(
-              children: [
-                NavBar(),
-                ResumeTitleCell(),
-                Expanded(
-                  child: Column(
-                    children: [
-                      Row(children: [
-                        ResumeImageCell(),
-                        ContactInfoCell(),
-                      ]),
-                      ResumedescriptionCell(),
-                  ],
+            children: const [
+              ContactInfoCell(),
+              ResumedescriptionCell(),
+            ],
           ),
         ),
-      ])),
+      ]),
     );
   }
 }
