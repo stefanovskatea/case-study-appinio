@@ -1,9 +1,8 @@
-import 'package:challenge/models/route_names.dart';
 import 'package:challenge/screens/current_forecast_page.dart';
 import 'package:challenge/screens/landing_page.dart';
 import 'package:challenge/screens/resume_page.dart';
 import 'package:flutter/cupertino.dart';
-import '../../screens/detailed_forecast_page.dart';
+import 'navigation_service.dart';
 
 
 Route<dynamic> generateRoute(RouteSettings settings){

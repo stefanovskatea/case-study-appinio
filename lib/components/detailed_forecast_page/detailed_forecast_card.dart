@@ -1,4 +1,5 @@
 import 'package:challenge/models/detailed_forecast_list_objects.dart';
+import 'package:challenge/styles/forecast_card_style.dart';
 import 'package:flutter/material.dart';
 
 
@@ -11,9 +12,7 @@ class DetailedForecastCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.only(left: 30, right: 30, bottom: 20),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
-      ),
+      shape: forecastCardShape,
       child: SizedBox(
         height: 200,
         child: Center(
@@ -24,8 +23,7 @@ class DetailedForecastCard extends StatelessWidget {
             '\nwind speed: ${details.speed}'
             '\ncondition: ${details.condition}',
             textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+            style: currentForecastCardStyle,
           ),
         ),
       ),

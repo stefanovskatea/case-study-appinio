@@ -1,4 +1,6 @@
-import 'package:challenge/components/resume_page_components/resume_image.dart';
+import 'package:challenge/components/resume_page/resume_image.dart';
+import 'package:challenge/components/resume_page/resume_page_recognizer.dart';
+import 'package:challenge/styles/contact_info_resume_page_style.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -12,10 +14,7 @@ class ContactInfoCell extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 10),
       color: Colors.black38,
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 30,
-          horizontal: 20,
-        ),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Center(
           child: Column(
             children: [
@@ -27,20 +26,10 @@ class ContactInfoCell extends StatelessWidget {
                     TextSpan(
                       text:
                           '\nAddress: College Ring 6/B-316, Bremen, 28759, Germany',
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () async {
-                          var url =
-                              "https://www.google.com/maps/place/Mercator+College,+College+Ring,+28759+Bremen/@53.1665942,8.6530881,17z/data=!4m13!1m7!3m6!1s0x47b12c9f229d1c9f:0x6cbc2e23d2aedb2c!2sCollege+Ring+6,+28759+Bremen!3b1!8m2!3d53.1665942!4d8.6552768!3m4!1s0x47b12c9f19b3c3a7:0xd2017a4c466309ac!8m2!3d53.1665033!4d8.6553607";
-                          if (await canLaunchUrlString(url)) {
-                            await launchUrlString(url);
-                          } else {
-                            throw 'Could not launch $url';
-                          }
-                        },
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 18,
-                          color: Colors.white),
+                      //TODO: Figure this shit out
+                      recognizer: resumePageRecognizer(
+                              "https://www.google.com/maps/place/Mercator+College,+College+Ring,+28759+Bremen/@53.1665942,8.6530881,17z/data=!4m13!1m7!3m6!1s0x47b12c9f229d1c9f:0x6cbc2e23d2aedb2c!2sCollege+Ring+6,+28759+Bremen!3b1!8m2!3d53.1665942!4d8.6552768!3m4!1s0x47b12c9f19b3c3a7:0xd2017a4c466309ac!8m2!3d53.1665033!4d8.6553607"),
+                      style: contactInfoStyle,
                     ),
                     TextSpan(
                       text: '\nPhone: +4917626001562',
@@ -53,10 +42,7 @@ class ContactInfoCell extends StatelessWidget {
                             throw 'Could not launch $url';
                           }
                         },
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 18,
-                          color: Colors.white),
+                      style: contactInfoStyle,
                     ),
                     TextSpan(
                       text: '\nEmail: tstefanovs@jacobs-university.de',
@@ -70,10 +56,7 @@ class ContactInfoCell extends StatelessWidget {
                             throw 'Could not launch $url';
                           }
                         },
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 18,
-                          color: Colors.white),
+                      style: contactInfoStyle,
                     ),
                     TextSpan(
                       text:
@@ -88,10 +71,7 @@ class ContactInfoCell extends StatelessWidget {
                             throw 'Could not launch $url';
                           }
                         },
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 18,
-                          color: Colors.white),
+                      style: contactInfoStyle,
                     ),
                     TextSpan(
                       text: '\nGithub: https://github.com/tejchu',
@@ -104,10 +84,7 @@ class ContactInfoCell extends StatelessWidget {
                             throw 'Could not launch $url';
                           }
                         },
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 18,
-                          color: Colors.white),
+                      style: contactInfoStyle,
                     ),
                   ],
                 ),

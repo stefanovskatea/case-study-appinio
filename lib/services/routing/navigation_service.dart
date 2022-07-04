@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 
 import '../../screens/detailed_forecast_page.dart';
 
+const String LandingPageRoute = 'LandingPage';
+const String CurrentForecastRoute = 'CurrentForecastPage';
+const String DetailedForecastRoute = 'DetailedForecastPage';
+const String CVRoute = 'CVPage';
+
 class NavigationService{
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 

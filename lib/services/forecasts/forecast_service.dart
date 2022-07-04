@@ -14,8 +14,7 @@ class ForecastService {
 
   final DateFormat formatter = DateFormat('dd.MM');
 
-  Future<List<CurrentForecastDetails>> updateCurrentForecasts() async {
-    //option 1: initialize it here, return it and access it through snapshot
+  Future<List<CurrentForecastDetails>> fetchCurrentForecasts() async {
     List<CurrentForecastDetails> allForecasts =[];
       for (int i = 0; i < cities.length; i++) {
         var url = Uri.parse(
@@ -27,8 +26,9 @@ class ForecastService {
       }
     return allForecasts;
   }
-  //option 2: take it from the widget as parameter and then return it (pass by reference and modify)
-  Future<List> updateDetailedForecast(List<DetailedForecastDetails> allDetailedForecasts,lon, lat) async {
+
+  Future<List> fetchDetailedForecast(double lon, double lat) async {
+    List<DetailedForecastDetails> allDetailedForecasts = [];
     var url = Uri.parse(
         'https://www.7timer.info/bin/astro.php?lon=$lon&lat=$lat&ac=0&unit=metric&output=json&tzshift=0');
     http.Response response = await http.get(url);

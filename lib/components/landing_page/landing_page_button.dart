@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../models/decorations.dart';
+import '../../decorations/landing_page_button_decoration.dart';
 import '../../services/setup_services.dart';
 import '../../services/routing/navigation_service.dart';
-import '../../textStyles/options_text_style.dart';
+import '../../styles/options_text_style.dart';
 
 class LandingPageButton extends StatelessWidget {
   final String route;
@@ -19,7 +19,7 @@ class LandingPageButton extends StatelessWidget {
     return Container(
       height: 100,
       width: 250,
-      decoration: landing_page_button_deco,
+      decoration: landingPageButtonDeco,
       child: GestureDetector(
         onTap: () {
           service<NavigationService>().navigateTo(route);
@@ -28,7 +28,7 @@ class LandingPageButton extends StatelessWidget {
           child: Text(
             title,
             textAlign: TextAlign.center,
-            style: options_text_style,
+            style: optionsTextStyle,
           ),
         ),
       ),

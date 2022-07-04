@@ -1,4 +1,4 @@
-import 'package:challenge/components/landing_page_components/landing_page_button.dart';
+import 'package:challenge/components/landing_page/landing_page_button.dart';
 import 'package:flutter/material.dart';
 import '../components/navbar/nav_drawer.dart';
 
@@ -8,7 +8,9 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.black38,
+      ),
       drawer: const NavigationDrawer(),
       body: Center(
         child: Column(
