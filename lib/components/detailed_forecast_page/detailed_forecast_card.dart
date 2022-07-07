@@ -1,31 +1,47 @@
 import 'package:challenge/models/detailed_forecast_list_objects.dart';
-import 'package:challenge/styles/forecast_card_style.dart';
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 
 class DetailedForecastCard extends StatelessWidget {
   final DetailedForecastDetails details;
-  const DetailedForecastCard({Key? key, required this.details}) : super(key: key);
 
+  const DetailedForecastCard({Key? key, required this.details})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.only(left: 30, right: 30, bottom: 20),
-      shape: forecastCardShape,
-      child: SizedBox(
-        height: 200,
-        child: Center(
-          child: Text(
-            '\nat: ${details.timestamp} on: ${details.date}'
-            '\ncloud cover: ${details.cloudcover}'
-            '\ntemperature: ${details.temperature}'
-            '\nwind speed: ${details.speed}'
-            '\ncondition: ${details.condition}',
-            textAlign: TextAlign.center,
-            style: currentForecastCardStyle,
-          ),
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(details.timestamp,style: GoogleFonts.lato(
+            textStyle: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 20),
+          ),),
+          Icon(details.icon, color: details.iconColor,),
+          Text(details.temperature.toString(),style: GoogleFonts.lato(
+            textStyle: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 20),
+          ),),
+          Text(details.windDirection,style: GoogleFonts.lato(
+            textStyle: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 20),
+          ),),
+          Text('at ${details.windSpeed}km/h',style: GoogleFonts.lato(
+            textStyle: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 20),
+          ),),
+        ],
       ),
     );
   }

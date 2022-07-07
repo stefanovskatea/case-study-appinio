@@ -1,24 +1,41 @@
+import 'package:flutter/material.dart';
+
 class DetailedForecastDetails {
-  late final String condition;
-  late final int temperature;
   late final String timestamp;
-  late final int cloudcover;
-  late final int speed;
+  late final IconData icon;
+  late final Color iconColor;
+  late final int temperature;
+  late final int windSpeed;
+  late final String windDirection;
   late final String date;
+  late final String name;
 
   DetailedForecastDetails({
-    required this.condition,
     required this.temperature,
     required this.timestamp,
-    required this.cloudcover,
-    required this.speed,
+    required this.windSpeed,
     required this.date,
   });
 
-  DetailedForecastDetails.fromJson(Map<dynamic,dynamic> json, index,this.timestamp, this.date){
-    temperature = json["dataseries"][index]['temp2m'];
-    condition = json["dataseries"][index]['prec_type'];
-    speed = json["dataseries"][index]["wind10m"]["speed"];
-    cloudcover = json["dataseries"][index]['cloudcover'];
+  DetailedForecastDetails.fromJson(Map<dynamic,dynamic> json,this.timestamp, this.date, this.name){
+    windSpeed = json["wind10m"]["speed"];
+    temperature = json['temp2m'];
+    windDirection = json["wind10m"]['direction'];
+    var conditionAux = json['prec_type'];
+    var cloudcoverAux = json['cloudcover'];
+    if(conditionAux == 'none' && cloudcoverAux <=3){
+      icon = Icons.sunny;
+      iconColor = Colors.amber;
+    }else if (conditionAux == 'none' && cloudcoverAux >3 && cloudcoverAux <= 6){
+      icon = Icons.wb_cloudy;
+      iconColor = Colors.white;
+    }else if(conditionAux == 'none' && cloudcoverAux >6){
+      icon = Icons.wb_cloudy;
+      iconColor = Colors.white;
+    }
+    else if(conditionAux == 'rain'){
+      icon = Icons.cloudy_snowing;
+      iconColor = Colors.white;
+    }
   }
 }

@@ -1,9 +1,8 @@
 import 'package:challenge/components/detailed_forecast_page/detailed_forecast_card.dart';
 import 'package:flutter/material.dart';
-import '../../models/detailed_forecast_list_objects.dart';
 
 class DetailedForecastList extends StatelessWidget {
-  final List<DetailedForecastDetails> forecasts;
+  final List<dynamic> forecasts;
 
   const DetailedForecastList({
     Key? key,
@@ -13,8 +12,10 @@ class DetailedForecastList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      shrinkWrap: true,
+      physics: const ClampingScrollPhysics(),
       itemCount: forecasts.length,
-      itemBuilder: (context, index) {
+      itemBuilder: (BuildContext context, int index) {
         return DetailedForecastCard(details: forecasts[index]);
       },
     );
