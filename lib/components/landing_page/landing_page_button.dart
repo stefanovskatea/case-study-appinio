@@ -17,7 +17,7 @@ class LandingPageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 55,
       width: 250,
       decoration: landingPageButtonDeco,
       child: GestureDetector(

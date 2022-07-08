@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 
 BoxDecoration landingPageButtonDeco = BoxDecoration(
-  color: Colors.black38,
-  borderRadius: BorderRadius.circular(15),
+  color: Colors.amber,
+  borderRadius: BorderRadius.circular(100),
   boxShadow: const [
-    BoxShadow(color: Colors.black12, blurRadius: 16),
+    BoxShadow(color: Colors.amber, blurRadius: 2),
   ],
 );

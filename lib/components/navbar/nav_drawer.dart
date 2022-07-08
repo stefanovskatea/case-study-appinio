@@ -12,7 +12,7 @@ class NavigationDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 250,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(color: Colors.black54,),
         ],
@@ -22,7 +22,7 @@ class NavigationDrawer extends StatelessWidget {
           Container(
             height: 60,
             width: 250,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.black,
             ),
             child: GestureDetector(
@@ -31,7 +31,7 @@ class NavigationDrawer extends StatelessWidget {
                   builder: (context) => LandingPage(),
                 ));
               },
-              child: (Icon(Icons.home, color: Colors.white38)),
+              child: (const Icon(Icons.home, color: Colors.white)),
               ),),
           SizedBox(
             height: 40,
