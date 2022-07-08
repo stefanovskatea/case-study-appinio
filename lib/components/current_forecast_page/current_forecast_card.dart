@@ -1,8 +1,7 @@
 import 'package:challenge/models/current_forecast_list_objects.dart';
 import 'package:challenge/screens/detailed_forecast_page.dart';
-import 'package:challenge/styles/forecast_card_style.dart';
+import 'package:challenge/styles/current_forecast_page/current_forecast_card_content.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CurrentForecastCard extends StatelessWidget {
   final CurrentForecastDetails details;
@@ -12,7 +11,6 @@ class CurrentForecastCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
@@ -27,11 +25,11 @@ class CurrentForecastCard extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         shape: forecastCardShape,
         child: SizedBox(
-          height: 130,
+          height: 125,
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
@@ -40,58 +38,19 @@ class CurrentForecastCard extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          details.city.cityName,
-                          style: GoogleFonts.lato(
-                            textStyle: currentForecastLocation,
-                          ),
-                        ),
-                        Text(
-                          details.timestamp,
-                          style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 20),
-                          ),
-                        ),
+                        Text(details.city.cityName, style: location),
+                        Text(details.timestamp, style: timestamp),
                       ],
                     ),
-                    Text(
-                      '${details.temperature.toString()}°',
-                      style: GoogleFonts.lato(
-                        textStyle: const TextStyle(
-                            fontSize: 50,
-                            fontWeight: FontWeight.w300,
-                            color: Colors.white),
-                      ),
-                    ),
+                    Text('${details.temperature.toString()}°',
+                        style: temperature),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      details.cloudcover,
-                      style: GoogleFonts.lato(
-                        textStyle: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18),
-                      ),
-                    ),
-                    const SizedBox(height:15),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10.0),
-                      child: Text(
-                        'currently ${details.condition}',
-                        style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 17)),
-                      ),
-                    ),
+                    Text(details.cloudcover, style: cloudcover),
+                    Text('Currently ${details.condition}', style: condition),
                   ],
                 ),
               ],

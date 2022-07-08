@@ -1,3 +1,4 @@
+import 'package:challenge/components/detailed_forecast_page/detailed_forecast_appbar.dart';
 import 'package:challenge/components/detailed_forecast_page/detailed_forecast_days_list.dart';
 import 'package:challenge/services/forecasts/forecast_service.dart';
 import 'package:flutter/material.dart';
@@ -26,16 +27,7 @@ class _DetailedForecastPageState extends State<DetailedForecastPage> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text('Three-day Forecast'),
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: Text(widget.selectedCity.cityName),//allForecasts[0][0].name),
-            ),
-          ],
-        ),
+        title: DetailedForecastPageAppBar( cityName:widget.selectedCity.cityName),
       ),
       body: FutureBuilder(
         future: fetchedForecasts,

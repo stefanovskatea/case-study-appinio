@@ -1,4 +1,4 @@
-import 'package:challenge/components/detailed_forecast_page/detailed_forecast_card.dart';
+import 'package:challenge/components/detailed_forecast_page/detailed_forecast_days_list_tile.dart';
 import 'package:flutter/material.dart';
 
 class DetailedForecastList extends StatelessWidget {

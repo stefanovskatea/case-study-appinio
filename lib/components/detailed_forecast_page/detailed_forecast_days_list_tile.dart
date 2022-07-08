@@ -1,6 +1,6 @@
 import 'package:challenge/models/detailed_forecast_list_objects.dart';
+import 'package:challenge/styles/detailed_forecast_page/detailed_forecast_list_contents.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class DetailedForecastCard extends StatelessWidget {
   final DetailedForecastDetails details;
@@ -16,31 +16,11 @@ class DetailedForecastCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(details.timestamp,style: GoogleFonts.lato(
-            textStyle: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-                fontSize: 20),
-          ),),
+          Text(details.timestamp,style: timestampdetail),
           Icon(details.icon, color: details.iconColor,),
-          Text(details.temperature.toString(),style: GoogleFonts.lato(
-            textStyle: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-                fontSize: 20),
-          ),),
-          Text(details.windDirection,style: GoogleFonts.lato(
-            textStyle: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-                fontSize: 20),
-          ),),
-          Text('at ${details.windSpeed}km/h',style: GoogleFonts.lato(
-            textStyle: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-                fontSize: 20),
-          ),),
+          Text(details.temperature.toString(),style: temperaturedetail),
+          Text(details.windDirection,style: windDirection),
+          Text('at ${details.windSpeed}km/h',style: windSpeed),
         ],
       ),
     );
