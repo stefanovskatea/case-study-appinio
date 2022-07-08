@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../styles/current_forecast_page/current_forecast_card_content.dart';
 
 class DetailedForecastDaysCard extends StatelessWidget {
@@ -9,6 +8,8 @@ class DetailedForecastDaysCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 5,
+      shadowColor: Colors.black,
       color: Colors.blueAccent,
       semanticContainer: true,
       clipBehavior: Clip.antiAliasWithSaveLayer,

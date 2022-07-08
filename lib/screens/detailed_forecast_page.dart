@@ -24,23 +24,27 @@ class _DetailedForecastPageState extends State<DetailedForecastPage> {
         .fetchDetailedForecast(widget.selectedCity.lon, widget.selectedCity.lat,
             widget.selectedCity.cityName);
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        iconTheme: const IconThemeData(color: Colors.amber),
+        backgroundColor: Colors.white,
         title: DetailedForecastPageAppBar( cityName:widget.selectedCity.cityName),
       ),
-      body: FutureBuilder(
-        future: fetchedForecasts,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.connectionState == ConnectionState.done) {
-            allForecasts = snapshot.data as List<dynamic>;
-            return DetailedForecastDaysList(allForecasts: allForecasts);
-          }
-          return const Text('An error has occurred');
-        },
+      body: Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: FutureBuilder(
+          future: fetchedForecasts,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (snapshot.connectionState == ConnectionState.done) {
+              allForecasts = snapshot.data as List<dynamic>;
+              return DetailedForecastDaysList(allForecasts: allForecasts);
+            }
+            return const Text('An error has occurred');
+          },
+        ),
       ),
     );
   }

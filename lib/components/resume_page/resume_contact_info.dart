@@ -1,9 +1,6 @@
-import 'package:challenge/components/resume_page/resume_image.dart';
-import 'package:challenge/components/resume_page/resume_page_recognizer.dart';
 import 'package:challenge/styles/contact_info_resume_page_style.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ContactInfoCell extends StatelessWidget {
   const ContactInfoCell({Key? key}) : super(key: key);
@@ -12,85 +9,42 @@ class ContactInfoCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10),
-      color: Colors.black38,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        child: Center(
-          child: Column(
-            children: [
-              const ResumeImageCell(),
-              RichText(
-                textAlign: TextAlign.left,
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text:
-                          '\nAddress: College Ring 6/B-316, Bremen, 28759, Germany',
-                      //TODO: Figure this shit out
-                      recognizer: resumePageRecognizer(
-                              "https://www.google.com/maps/place/Mercator+College,+College+Ring,+28759+Bremen/@53.1665942,8.6530881,17z/data=!4m13!1m7!3m6!1s0x47b12c9f229d1c9f:0x6cbc2e23d2aedb2c!2sCollege+Ring+6,+28759+Bremen!3b1!8m2!3d53.1665942!4d8.6552768!3m4!1s0x47b12c9f19b3c3a7:0xd2017a4c466309ac!8m2!3d53.1665033!4d8.6553607"),
-                      style: contactInfoStyle,
-                    ),
-                    TextSpan(
-                      text: '\nPhone: +4917626001562',
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () async {
-                          var url = "https://www.o2online.de/";
-                          if (await canLaunchUrlString(url)) {
-                            await launchUrlString(url);
-                          } else {
-                            throw 'Could not launch $url';
-                          }
-                        },
-                      style: contactInfoStyle,
-                    ),
-                    TextSpan(
-                      text: '\nEmail: tstefanovs@jacobs-university.de',
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () async {
-                          var url =
-                              "https://www.microsoft.com/en-us/microsoft-365/outlook/outlook-for-business";
-                          if (await canLaunchUrlString(url)) {
-                            await launchUrlString(url);
-                          } else {
-                            throw 'Could not launch $url';
-                          }
-                        },
-                      style: contactInfoStyle,
-                    ),
-                    TextSpan(
-                      text:
-                          '\nLinkedin: https://www.linkedin.com/in/tea-stefanovska',
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () async {
-                          var url =
-                              "https://www.linkedin.com/in/tea-stefanovska/";
-                          if (await canLaunchUrlString(url)) {
-                            await launchUrlString(url);
-                          } else {
-                            throw 'Could not launch $url';
-                          }
-                        },
-                      style: contactInfoStyle,
-                    ),
-                    TextSpan(
-                      text: '\nGithub: https://github.com/tejchu',
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () async {
-                          var url = "https://github.com/tejchu";
-                          if (await canLaunchUrlString(url)) {
-                            await launchUrlString(url);
-                          } else {
-                            throw 'Could not launch $url';
-                          }
-                        },
-                      style: contactInfoStyle,
-                    ),
-                  ],
-                ),
+        padding: const EdgeInsets.only(bottom: 30, left: 20, right: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Text(
+                'Contact\n',
+                style: GoogleFonts.lato(
+                    textStyle: const TextStyle(
+                        color: Colors.amber,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w400)),
               ),
-            ],
-          ),
+            ),
+            Text(
+              'Address: College Ring 6/B-316, Bremen, 28759, Germany',
+              style: contactInfoStyle,
+            ),
+            Text(
+              'Phone: +4917626001562',
+              style: contactInfoStyle,
+            ),
+            Text(
+              'Email: tstefanovs@jacobs-university.de',
+              style: contactInfoStyle,
+            ),
+            Text(
+              'Linkedin: https://www.linkedin.com/in/tea-stefanovska',
+              style: contactInfoStyle,
+            ),
+            Text(
+              'Github: https://github.com/tejchu',
+              style: contactInfoStyle,
+            ),
+          ],
         ),
       ),
     );

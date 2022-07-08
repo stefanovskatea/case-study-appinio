@@ -19,36 +19,32 @@ class _CurrentForecastPageState extends State<CurrentForecastPage> {
         service<ForecastService>().fetchCurrentForecasts();
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
+        iconTheme: const IconThemeData(color: Colors.amber),
         title: Text(
           "Weather",
           style: currentForecastAppBar,
         ),
       ),
-      body: Column(
-        children: [
-          const Divider(
-            color: Colors.white,
-          ),
-          Expanded(
-            child: FutureBuilder(
-              future: fetchForecasts,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                if (snapshot.connectionState == ConnectionState.done) {
-                  List<CurrentForecastDetails> allForecasts =
-                      snapshot.data as List<CurrentForecastDetails>;
-                  return CurrentForecastList(forecasts: allForecasts);
-                }
-                return const Text('An error has occurred');
-              },
-            ),
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: FutureBuilder(
+          future: fetchForecasts,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                  child: CircularProgressIndicator(color: Colors.amber));
+            }
+            if (snapshot.connectionState == ConnectionState.done) {
+              List<CurrentForecastDetails> allForecasts =
+                  snapshot.data as List<CurrentForecastDetails>;
+              return CurrentForecastList(forecasts: allForecasts);
+            }
+            return const Text('An error has occurred');
+          },
+        ),
       ),
     );
   }

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 var threeDayForecast = GoogleFonts.lato(
     textStyle: const TextStyle(
-        color: Colors.white, fontSize: 20, fontWeight: FontWeight.w400));
+        color: Colors.amber, fontSize: 20, fontWeight: FontWeight.w600));
 
 var cityNameStyle = GoogleFonts.lato(
     textStyle: const TextStyle(
-        color: Colors.white, fontSize: 20, fontWeight: FontWeight.w400));
+        color: Colors.black87, fontSize: 20, fontWeight: FontWeight.w600));
