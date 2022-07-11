@@ -9,12 +9,12 @@ import '../../models/current_forecast_list_objects.dart';
 //TODO: create endpoint, units and output variables,
 
 class ForecastService {
-  final DateFormat formatter = DateFormat('EEE'); //DateFormat('dd.MM');
+  final DateFormat formatter = DateFormat('EEE');
+  final DateFormat timeformatter = DateFormat.Hm();//DateFormat('dd.MM');
 
   Future<List<CurrentForecastDetails>> fetchCurrentForecasts() async {
-    String hour = DateTime.now().hour.toString();
-    String minute = DateTime.now().minute.toString();
-    String timestamp = '$hour:$minute';
+    DateTime timenow = DateTime.now();
+    String timestamp = timeformatter.format(timenow).toString();
     List<CurrentForecastDetails> allForecasts = [];
     for (int i = 0; i < cities.length; i++) {
       var url = Uri.parse(
