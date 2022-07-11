@@ -1,5 +1,4 @@
 import 'package:challenge/services/forecasts/forecast_service.dart';
-import 'package:challenge/services/setup_services.dart';
 import 'package:challenge/styles/current_forecast_page/current_forecast_appbar.dart';
 import 'package:flutter/material.dart';
 import '../components/current_forecast_page/current_forecast_list.dart';
@@ -15,8 +14,7 @@ class CurrentForecastPage extends StatefulWidget {
 class _CurrentForecastPageState extends State<CurrentForecastPage> {
   @override
   Widget build(BuildContext context) {
-    final Future<dynamic> fetchForecasts =
-        service<ForecastService>().fetchCurrentForecasts();
+    final Future<List<CurrentForecastDetails>> fetchForecasts = ForecastService().fetchCurrentForecasts();
 
     return Scaffold(
       backgroundColor: Colors.white,

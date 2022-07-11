@@ -27,9 +27,9 @@ class ForecastService {
     return allForecasts;
   }
 
-  Future<List<dynamic>> fetchDetailedForecast(
+  Future<List<List<DetailedForecastDetails>>> fetchDetailedForecast(
       double lon, double lat, String name) async {
-    List<dynamic> allDetailedForecasts = [[], [], [],];
+    List<List<DetailedForecastDetails>> allDetailedForecasts = [[], [], [],];
     var url = Uri.parse(
         'https://www.7timer.info/bin/astro.php?lon=$lon&lat=$lat&ac=0&unit=metric&output=json&tzshift=0');
     http.Response response = await http.get(url);

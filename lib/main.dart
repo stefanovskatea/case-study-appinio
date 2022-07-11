@@ -1,12 +1,9 @@
-import 'package:challenge/services/setup_services.dart';
-import 'package:challenge/services/routing/navigation_service.dart';
-import 'package:challenge/services/routing/router.dart';
+import 'package:challenge/screens/landing_page.dart';
 import 'package:flutter/material.dart';
 
 
 
 void main() {
-  setupServices();
   runApp(const MyApp());
 }
 
@@ -15,14 +12,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Case Study',
       debugShowCheckedModeBanner: false,
-      home: Navigator(
-        key: service<NavigationService>().navigatorKey,
-        onGenerateRoute: generateRoute,
-        initialRoute: LandingPageRoute,
-      ),
+      home: LandingPage(),
     );
   }
 }

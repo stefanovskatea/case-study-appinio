@@ -1,9 +1,9 @@
 import 'package:challenge/components/detailed_forecast_page/detailed_forecast_appbar.dart';
 import 'package:challenge/components/detailed_forecast_page/detailed_forecast_days_list.dart';
+import 'package:challenge/models/detailed_forecast_list_objects.dart';
 import 'package:challenge/services/forecasts/forecast_service.dart';
 import 'package:flutter/material.dart';
 import '../models/city_model.dart';
-import '../services/setup_services.dart';
 
 class DetailedForecastPage extends StatefulWidget {
   final City selectedCity;
@@ -20,7 +20,7 @@ class _DetailedForecastPageState extends State<DetailedForecastPage> {
 
   @override
   Widget build(BuildContext context) {
-    final Future<List<dynamic>> fetchedForecasts = service<ForecastService>()
+    final Future<List<List<DetailedForecastDetails>>> fetchedForecasts = ForecastService()
         .fetchDetailedForecast(widget.selectedCity.lon, widget.selectedCity.lat,
             widget.selectedCity.cityName);
     return Scaffold(
