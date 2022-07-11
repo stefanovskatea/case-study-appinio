@@ -28,23 +28,20 @@ class _CurrentForecastPageState extends State<CurrentForecastPage> {
           style: currentForecastAppBar,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 8.0),
-        child: FutureBuilder(
-          future: fetchForecasts,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                  child: CircularProgressIndicator(color: Colors.amber));
-            }
-            if (snapshot.connectionState == ConnectionState.done) {
-              List<CurrentForecastDetails> allForecasts =
-                  snapshot.data as List<CurrentForecastDetails>;
-              return CurrentForecastList(forecasts: allForecasts);
-            }
-            return const Text('An error has occurred');
-          },
-        ),
+      body: FutureBuilder(
+        future: fetchForecasts,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+                child: CircularProgressIndicator(color: Colors.amber));
+          }
+          if (snapshot.connectionState == ConnectionState.done) {
+            List<CurrentForecastDetails> allForecasts =
+                snapshot.data as List<CurrentForecastDetails>;
+            return CurrentForecastList(forecasts: allForecasts);
+          }
+          return const Text('An error has occurred');
+        },
       ),
     );
   }

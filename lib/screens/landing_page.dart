@@ -26,6 +26,7 @@ class LandingPage extends StatelessWidget {
             const LandingPageButton(
                 route: 'CurrentForecastPage', title: 'Weather Forecast'),
             const LandingPageButton(route: 'CVPage', title: 'My Resume'),
+            ////////////////////////////////////////// ask about loading images
             SizedBox(
               height: 350,
               child: Image.asset(

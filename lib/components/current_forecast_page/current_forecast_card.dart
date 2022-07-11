@@ -24,7 +24,7 @@ class CurrentForecastCard extends StatelessWidget {
         elevation: 5,
         shadowColor: Colors.black,
         color: details.bckgColor,
-        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+        margin: const EdgeInsets.symmetric(vertical: 5),
         shape: forecastCardShape,
         child: SizedBox(
           height: 125,
